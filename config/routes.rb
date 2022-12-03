@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'members/show'
+    get 'members/edit'
+    get 'members/unsubscribe'
+  end
+  namespace :public do
+    get 'targets/new'
+    get 'targets/index'
+    get 'targets/show'
+    get 'targets/edit'
+  end
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, controllers: {
