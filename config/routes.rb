@@ -30,6 +30,7 @@ scope module: :public do
   put "/members/information" => "members#update"
   patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
   resources :targets, only: [:index, :show, :create, :edit, :update, :destroy]
+end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
