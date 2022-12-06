@@ -13,6 +13,17 @@
   </head>
 
   <body>
-    
+    <%= render "layouts/header" %>
+      <main>
+        <% if flash[:notice] %>
+          <p class="alert alert-success text-center"><%= notice %></p>
+        <% elsif flash[:alert] %>
+          <p class="alert alert-danger text-center"><%= alert %></p>
+        <% end %>
+        <div class="container-fluid pt-3 pb-5">
+          <%= yield %>
+        </div>
+      </main>
+    <%= render "layouts/footer" %>
   </body>
 </html>
