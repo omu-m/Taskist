@@ -16,9 +16,9 @@
     <%= render "layouts/header" %>
       <main>
         <% if flash[:notice] %>
-          <p class="alert alert-success text-center"><%= notice %></p>
+          <p class="alert alert-primary text-center"><%= notice %></p>
         <% elsif flash[:alert] %>
-          <p class="alert alert-danger text-center"><%= alert %></p>
+          <p class="alert alert-warning text-center"><%= alert %></p>
         <% end %>
         <div class="container-fluid pt-3 pb-5">
           <%= yield %>
