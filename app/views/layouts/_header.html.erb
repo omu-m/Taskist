@@ -1,12 +1,12 @@
 <header class="sticky-top">
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #CCCCCC">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5F9EA0">
     <div class="container">
       <% if admin_signed_in? %>
-        <a class="navbar-brand" href="/admin"><%= image_tag "logo.jpg", :size => "250x75" %></a>
+        <a class="navbar-brand p-3 text-light" href="/admin">Taskist.</a>
       <% elsif member_signed_in? %>
-        <a class="navbar-brand" href="/targets"><%= image_tag "logo.jpg", :size => "250x75" %></a>
+        <a class="navbar-brand p-3 text-light" href="/targets">Taskist.</a>
       <% else %>
-        <a class="navbar-brand" href="/"><%= image_tag "logo.jpg", :size => "250x75" %></a>
+        <a class= "navbar-brand p-3 text-light" href='/'>Taskist.</a>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
