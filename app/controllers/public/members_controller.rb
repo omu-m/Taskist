@@ -6,6 +6,18 @@ class Public::MembersController < ApplicationController
   end
 
   def edit
+    @member = current_member
+  end
+
+  def update
+    @member = current_member
+    if @member.update(member_params)
+      flash[:notice] = "登録情報を変更しました。"
+      redirect_to mypage_path
+    else
+      flash[:notice] = "登録情報の変更に失敗しました。"
+      render "edit"
+    end
   end
 
   def unsubscribe

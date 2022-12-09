@@ -1,0 +1,75 @@
+<script>
+  // フォーム全体の要素
+  var memberEdit = document.querySelector("#memberEdit");
+
+  // 各入力フィールド(name, email etc.) の要素
+  var memberName = document.querySelector("#memberName");
+  var memberEmailField = document.querySelector("#memberEmail");
+
+  // 各入力フィールド内の<input>タグ
+  var memberName = document.querySelector("#member_name");
+  var memberEmail = document.querySelector("#member_email");
+
+  // フォーム送信ボタン（Submit）の要素
+  var memberSubmitBtn = document.querySelector("#member_submit");
+
+  // 各フィールドのエラーメッセージ表示用の paragraph
+  var namePara = document.createElement('p');
+  var emailPara = document.createElement('p');
+
+  // 各入力フィールドのバリデーションチェック用の変数
+  // エラー時は"false", OK時は"true"を代入する（後述）
+  var activeName;
+  var activeEmail;
+
+  // Submitボタンの有効化条件
+  memberSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
+  membereEdit.addEventListener('input', ()=>{
+    if(activeName === true && activeEmail === true){
+      memberSubmitBtn.disabled = false;
+    }else{
+      memberSubmitBtn.disabled = true;
+    }
+  // });
+
+  // 名前のバリデーション
+  // memberName.addEventListener("input", ()=>{
+    if(memberName.value === ""){ // 入力フォームが空の場合
+      namePara.textContent = "名前を入力してください";
+      namePara.style.color = "olive";
+      activeName = false;
+    }else if(memberName.value.length < 2){ // 文字数が2文字未満の場合
+      namePara.textContent = "名前は2文字以上で入力してください";
+      namePara.style.color = "olive";
+      activeName = false;
+    }else if(memberName.value.length > 12){ // 文字数が12文字以上の場合
+      namePara.textContent = "名前は12文字以内で入力してください";
+      namePara.style.color = "olive";
+      memberSubmitActive -= 1;
+      activeName = false;
+    }else{ // バリデーションチェック完了時（OK時）の処理
+      namePara.textContent = "";
+      activeName = true;
+    }
+    memberNameField.appendChild(namePara); // name用のバリデーションエラーメッセージを表示
+  // });
+
+  //メールアドレスのバリデーション
+  // memberEmail.addEventListener('input', ()=>{
+    // email の正規表現パターン↓
+    var emailRegex = /^[a-zA-Z0-9_+-]+(\.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
+    if(memberEmail.value === ""){ // 入力フォームが空の場合
+      emailPara.textContent = "メールアドレスを入力してください";
+      emailPara.style.color = "olive";
+      activeEmail = false;
+    }else if(!emailRegex.test(memberEmail.value)){ // 入力した値がemailRegexの正規表現パターンにマッチしない場合
+      emailPara.textContent = "有効なアドレスを入力してください";
+      emailPara.style.color = "olive";
+      activeEmail = false;
+    }else{ // バリデーションチェック完了時（OK時）の処理
+      emailPara.textContent = "";
+      activeEmail = true;
+    }
+    memberEmailField.appendChild(emailPara); // email用のバリデーションエラーメッセージを表示
+  });
+</script>
