@@ -3,7 +3,7 @@
   var memberEdit = document.querySelector("#memberEdit");
 
   // 各入力フィールド(name, email etc.) の要素
-  var memberName = document.querySelector("#memberName");
+  var memberNameField = document.querySelector("#memberName");
   var memberEmailField = document.querySelector("#memberEmail");
 
   // 各入力フィールド内の<input>タグ
@@ -24,7 +24,7 @@
 
   // Submitボタンの有効化条件
   memberSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
-  membereEdit.addEventListener('input', ()=>{
+  memberEdit.addEventListener('input', ()=>{
     if(activeName === true && activeEmail === true){
       memberSubmitBtn.disabled = false;
     }else{
