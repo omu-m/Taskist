@@ -1,4 +1,5 @@
 class Public::TargetsController < ApplicationController
+  before_action :authenticate_member!
 
   def new
     @target = Target.new
@@ -17,6 +18,7 @@ class Public::TargetsController < ApplicationController
   end
 
   def index
+    @targets = Target.all
   end
 
   def show
