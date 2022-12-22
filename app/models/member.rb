@@ -4,6 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  belongs_to :target
+
   validates :name, presence: true, length: { minimum: 2, maximum: 12 }
   validates :email, presence: true, uniqueness: true
 

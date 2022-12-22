@@ -1,0 +1,40 @@
+<% if targets.count == 0 %>
+  <div class="row">
+    <div class="col-12">
+      <h4 class="mt-5 text-center">まだ投稿がありません。</h4>
+    </div>
+  </div>
+<% end %>
+<% targets.each do |target| %>
+  <div class="row">
+    <div class="col-12 border border-dark p-3 mb-4 target-block">
+      <div class="row">
+        <div class="col-2 col-md-1">
+          <%= link_to mypage_path(target.member) do %>
+            <%= image_tag target.member.get_profile_image, size: "50x50", class: "rounded-circle border" %>
+          <% end %>
+        </div>
+        <div class="col-8 col-md-4">
+          <%= target.member.name %><br>
+          <%= "投稿日：" + target.created_at.strftime("%Y月%m日%d日") %>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12">
+          <h4><%= target.goal %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p><%= safe_join(target.reason.split("\n"),tag(:br)) %></p>
+          <p><%= target.created_at.strftime("%Y月%m日%d日") %> - <%= target.deadline.strftime("%Y月%m日%d日") %></p>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <%= link_to "詳細", target_path(target.id), class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
