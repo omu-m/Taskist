@@ -70,7 +70,8 @@ ActiveRecord::Schema.define(version: 2022_12_08_123710) do
     t.integer "member_id", null: false
     t.string "goal", null: false
     t.text "reason", null: false
-    t.date "deadline", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.boolean "completion_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

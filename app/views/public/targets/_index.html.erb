@@ -7,7 +7,7 @@
 <% end %>
 <% targets.each do |target| %>
   <div class="row">
-    <div class="col-12 border border-dark p-3 mb-4 target-block">
+    <div class="col-12 border border-dark p-3 mb-4 mt-5 target-block">
       <div class="row">
         <div class="col-2 col-md-1">
           <%= link_to mypage_path(target.member) do %>
@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col-12">
           <p><%= safe_join(target.reason.split("\n"),tag(:br)) %></p>
-          <p><%= target.created_at.strftime("%Y月%m日%d日") %> - <%= target.deadline.strftime("%Y月%m日%d日") %></p>
+          <p>【開始日】<%= target.start_date.strftime("%Y月%m日%d日") %> ～【達成日】<%= target.end_date.strftime("%Y月%m日%d日") %></p>
         </div>
       </div>
 
