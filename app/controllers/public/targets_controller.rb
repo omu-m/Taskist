@@ -30,6 +30,6 @@ class Public::TargetsController < ApplicationController
   private
 
   def target_params
-    params.require(:target).permit(:goal, :reason, :deadline)
+    params.require(:target).permit(:goal, :reason, :start_date, :end_date)
   end
 end

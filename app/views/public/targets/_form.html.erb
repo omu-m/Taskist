@@ -1,17 +1,27 @@
 <%= form_with model: target, local: true do |f| %>
-  <div class="form-group mt-5">
-    <%= f.label :目標 %>
-    <%= f.text_field :goal, autofocus: true, class: "form-control", placeholder: "例:課題終わらせる!!" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :理由や意気込み %>
-    <%= f.text_area :reason, class: "form-control", placeholder: "理由や意気込みを書いてみよう" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :いつまでに達成する? %>
-    <%= f.date_field :deadline, class: "form-control", min: Date.current %>
-  </div>
-  <div class="actions text-center">
-    <%= f.submit "登録する", class: "btn btn-outline-secondary mt-5" %>
+  <div class="row">
+    <div class="col-11 mx-auto">
+      <div class="form-group mt-5">
+        <%= f.label :目標（30文字以内）, class: "form-label" %>
+        <%= f.text_field :goal, autofocus: true, class: "form-control", placeholder: "例:課題終わらせる!!" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :理由や意気込み（200文字以内） %>
+        <%= f.text_area :reason, rows: "4", class: "form-control", placeholder: "理由や意気込みを書いてみよう" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :いつからする? %>
+        <%= f.date_field :start_date, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :いつまでに達成する? %>
+        <%= f.date_field :end_date, class: "form-control" %>
+      </div>
+      <div class="actions text-center">
+        <div class="mb-4">
+          <%= f.submit "登録する", class: "btn btn-outline-secondary mt-5" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -8,8 +8,10 @@ class CreateTargets < ActiveRecord::Migration[6.1]
       t.string :goal, null: false
       # 理由を保存するカラム
       t.text :reason, null: false
+      # 開始を保存するカラム
+      t.date :start_date, null: false
       # 締め切りを保存するカラム
-      t.date :deadline, null: false
+      t.date :end_date, null: false
       # 完了状況を保存するカラム
       t.boolean :completion_status, null: false, default: false
 
