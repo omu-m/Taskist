@@ -2,7 +2,8 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_member!
 
   def show
-    @member = current_member
+    @member = Member.find(params[:id])
+    @targets = @member.targets.order(updated_at: :desc)
   end
 
   def edit
@@ -13,7 +14,7 @@ class Public::MembersController < ApplicationController
     @member = current_member
     if @member.update(member_params)
       flash[:notice] = "登録情報を変更しました。"
-      redirect_to mypage_path
+      redirect_to member_path
     else
       flash[:notice] = "登録情報の変更に失敗しました。"
       render "edit"

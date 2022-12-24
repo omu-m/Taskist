@@ -20,7 +20,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    mypage_path
+    member_path(current_member)
   end
 
   def after_sign_out_path_for(resource)
@@ -33,4 +33,19 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  # 退会しているかを判断するメソッド
+  def reject_member
+    # (処理1) 入力された項目からアカウントを1件取得
+    @member = Member.find_by(email: params[:member][:email])
+    # アカウントを取得できなかった場合、このメソッドを終了する
+    return if !@member
+    # (処理2) 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    if @member.valid_password?(params[:member][:password]) && (@member.is_deleted == true)
+      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+      redirect_to new_member_registration_path
+    else
+      flash[:alert] = "確認できませんでした。再度項目を入力してください。"
+    end
+  end
 end

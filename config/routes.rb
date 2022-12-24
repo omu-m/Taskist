@@ -15,21 +15,29 @@ end
 # URL /members/sign_in ...
 devise_for :members, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: "public/sessions"
 }
 
 scope module: :public do
   root to: "homes#top"
   get "/about" => "homes#about", as: "about"
-  get "/members/mypage" => "members#show", as: "mypage"
-  # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
-  get "/members/information/edit" => "members#edit", as: "edit_information"
-  patch "/members/information" => "members#update", as: "update_information"
-  # 退会機能
-  get "/members/unsubscribe" => "members#unsubscribe", as: "confirm_unsubscribe"
-  put "/members/information" => "members#update"
-  patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
-  resources :targets
+  resources :members, only: [:show, :edit, :update] do
+    # :idが必要な場合
+    member do
+      # 退会機能
+      get "/unsubscribe" => "members#unsubscribe", as: "confirm_unsubscribe"
+      patch "/withdrawal" => "members#withdrawal", as: "withdrawal_member"
+    end
+  end
+  # get "/members/mypage" => "members#show", as: "mypage"
+  # # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
+  # get "/members/information/edit" => "members#edit", as: "edit_information"
+  # patch "/members/information" => "members#update", as: "update_information"
+  # # 退会機能
+  # get "/members/unsubscribe" => "members#unsubscribe", as: "confirm_unsubscribe"
+  # put "/members/information" => "members#update"
+  # patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
+  resources :targets, only: [:new, :index, :show, :create, :edit, :update, :destroy]
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
