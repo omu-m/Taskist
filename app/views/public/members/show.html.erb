@@ -7,9 +7,11 @@
       </div>
     </div>
     <div class="col-md-10 offset-md-1">
-      <div style="text-align:right;">
-        <%= link_to "編集する" , edit_information_path, class: "btn btn-outline-primary" %>
-      </div>
+      <% if @member == current_member %>
+        <div style="text-align:right;">
+          <%= link_to "編集する" , edit_member_path, class: "btn btn-outline-primary" %>
+        </div>
+      <% end %>
       <table class="table table-bordered my-4">
         <tr>
           <th class="table-active">プロフィール画像</th><td><%= image_tag @member.get_profile_image, size: "80x80", style: "border-radius: 50px;" %></td>
@@ -24,16 +26,19 @@
         <% end %>
       </table>
     </div>
-     <div class="col-md-2 offset-md-1 mt-4">
+     <div class="col-12 col-md-8 mx-auto mt-4">
+      <% if @member == current_member %>
+        <div style="text-align:right;">
+          <%= link_to "目標新規作成", new_target_path, class: "btn btn-info text-decoration-none" %>
+        </div>
+      <% end %>
       <div style="text-align:center;">
-        <h5 class="text-center"><strong>自分の目標一覧</strong></h5>
+        <h5 class="text-center"><strong><%= @member.name %>の目標一覧</strong></h5>
         <hr class="col-md-10 mt-2">
       </div>
     </div>
-    <div class='d-flex align-items-center'>
-      <div class='col h3 m-0'>
-        <%= link_to "目標新規作成", new_target_path, class:'btn btn-info text-decoration-none' %>
-      </div>
+    <div class="col-12 col-md-8 mx-auto mb-5">
+      <%= render "public/targets/index", targets: @targets %>
     </div>
   </div>
 </div>
