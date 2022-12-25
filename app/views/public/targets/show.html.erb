@@ -1,2 +1,41 @@
-<h1>Public::Targets#show</h1>
-<p>Find me in app/views/public/targets/show.html.erb</p>
+<div class="row">
+  <div class="col-11 col-md-9 mx-auto border border-dark border-dark post-show px-5 pt-5 pb-4 mt-5">
+    <div class="row">
+      <div class="col-2 col-md-1">
+        <%= link_to member_path(@target.member) do %>
+          <%= image_tag @target.member.get_profile_image, size: "50x50", class: "rounded-circle border" %>
+        <% end %>
+      </div>
+      <div class="col-8 col-md-4">
+        <%= @target.member.name %><br>
+        <%= "投稿日：" + @target.created_at.strftime("%Y月%m日%d日") %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <h3><%= @target.goal %></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p><%= safe_join(@target.reason.split("\n"),tag(:br)) %></p>
+        <p>【開始日】<%= @target.start_date.strftime("%Y月%m日%d日") %> ～【達成日】<%= @target.end_date.strftime("%Y月%m日%d日") %></p>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col-12 col-md-9 mx-auto">
+        <div class="row">
+          <% if @target.member == current_member %>
+            <div class = "col-6">
+              <%= link_to "編集", edit_target_path, class: "btn btn-success btn-block col-6 mx-auto" %>
+            </div>
+            <div class="col-6">
+              <%= link_to "削除", target_path(@target), method: :delete, data: { confirm: "OKを押すと目標の「#{@target.goal}」が削除されます。本当によろしいですか？"}, class: "btn btn-danger btn-block col-6 mx-auto" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
