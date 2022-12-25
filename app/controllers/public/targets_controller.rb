@@ -9,10 +9,10 @@ class Public::TargetsController < ApplicationController
     @target = Target.new(target_params)
     @target.member_id = current_member.id
     if @target.save
-      flash[:notice] = "正常に作成されました。"
+      flash[:notice] = "目標「#{target_params[:goal]}」を投稿しました。"
       redirect_to targets_path
     else
-      flash[:alert] = "作成に失敗しました。"
+      flash[:alert] = "入力内容を確認してください。"
       render "new"
     end
   end
@@ -22,6 +22,7 @@ class Public::TargetsController < ApplicationController
   end
 
   def show
+    @target = Target.find(params[:id])
   end
 
   def edit
