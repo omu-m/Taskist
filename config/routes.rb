@@ -37,7 +37,9 @@ scope module: :public do
   # get "/members/unsubscribe" => "members#unsubscribe", as: "confirm_unsubscribe"
   # put "/members/information" => "members#update"
   # patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
-  resources :targets, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+  resources :targets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+    resources :tasks, only: [:create, :destroy]
+  end
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
