@@ -23,6 +23,7 @@ class Public::TargetsController < ApplicationController
 
   def show
     @target = Target.find(params[:id])
+    @target_task = Task.new
   end
 
   def edit
