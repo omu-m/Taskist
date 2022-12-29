@@ -1,16 +1,9 @@
 <% target.tasks.each do |task| %>
   <div class="row border-top border-dark pt-2">
     <div class="col-1">
-      <%= link_to member_path(task.member) do %>
-        <%= image_tag task.member.get_profile_image, size: "50x50", class: "rounded-circle border" %>
-      <% end %>
+      <%= task.created_at.strftime('%Y-%m-%d %H:%M') %>
     </div>
     <div id="target-<%= @target.id %>" class="col-11">
-      <div class="row">
-        <div class="col-12">
-          <%= task.member.name %>
-        </div>
-      </div>
       <div class="row">
         <div class="col-12 col-md-10">
           <%= safe_join(task.content.split("\n"),tag(:br)) %>
@@ -19,11 +12,6 @@
           <% if task.member == current_member %>
             <%= link_to "削除", target_task_path(task.target, task), remote: true, method: :delete, class: "btn btn-sm btn-danger" %>
           <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 mt-2 mb-1 text-right">
-          <%= task.created_at.strftime('%Y-%m-%d %H:%M') %>
         </div>
       </div>
     </div>
