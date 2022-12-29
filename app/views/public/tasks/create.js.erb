@@ -1,0 +1,3 @@
+$("#target-<%= @target.id %> .tasks-count").html("<%= j(render "public/tasks/counter", target: @target) %>");
+$(".target-tasks").html("<%= j(render "public/tasks/index", target: @target) %>");
+$("#task_content").val("");

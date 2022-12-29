@@ -11,6 +11,13 @@
         <%= "投稿日：" + @target.created_at.strftime("%Y月%m日%d日") %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-4" style="margin-left: 40px;" id="target-<%= @target.id %>">
+        <span class="tasks-count", style="cursor: pointer" >
+          <%= render "public/tasks/counter", target: @target %>
+        </span>
+      </div>
+    </div>
     <div class="row mt-3">
       <div class="col-12">
         <h3><%= @target.goal %></h3>
@@ -27,15 +34,16 @@
     <div class="row mt-5">
       <h3>タスク</h3>
     </div>
-
-    <div class="row">
-      <div class="col-12 target-tasks">
-        <%= render "public/tasks/index", target: @target %>
+    <% if @target.member == current_member %>
+      <div class="row">
+        <div class="col-12 target-tasks">
+          <%= render "public/tasks/index", target: @target %>
+        </div>
+        <div class="col-12">
+          <%= render "public/tasks/form" %>
+        </div>
       </div>
-      <div class="col-12">
-        <%= render "public/tasks/form" %>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
