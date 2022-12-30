@@ -30,6 +30,21 @@
       </div>
     </div>
 
+    <div class="row my-4">
+      <div class="col-12 col-md-9 mx-auto">
+        <div class="row">
+          <% if @target.member == current_member %>
+            <div class="col-6">
+              <%= link_to "編集", edit_target_path, class: "btn btn-success btn-block col-6 mx-auto" %>
+            </div>
+            <div class="col-6">
+              <%= link_to "削除", target_path(@target), method: :delete, data: { confirm: "OKを押すと目標の「#{@target.goal}」が削除されます。本当によろしいですか？"}, class: "btn btn-danger btn-block col-6 mx-auto" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
     <!--タスク一覧・フォーム-->
     <div class="row mt-5">
       <h3>タスク</h3>
@@ -44,20 +59,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-</div>
-
-<div class="row my-4">
-  <div class="col-12 col-md-9 mx-auto">
-    <div class="row">
-      <% if @target.member == current_member %>
-        <div class="col-6">
-          <%= link_to "編集", edit_target_path, class: "btn btn-success btn-block col-6 mx-auto" %>
-        </div>
-        <div class="col-6">
-          <%= link_to "削除", target_path(@target), method: :delete, data: { confirm: "OKを押すと目標の「#{@target.goal}」が削除されます。本当によろしいですか？"}, class: "btn btn-danger btn-block col-6 mx-auto" %>
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>
