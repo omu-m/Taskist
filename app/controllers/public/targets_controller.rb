@@ -12,7 +12,7 @@ class Public::TargetsController < ApplicationController
       flash[:notice] = "目標「#{target_params[:goal]}」を投稿しました。"
       redirect_to targets_path
     else
-      flash[:alert] = "入力内容を確認してください。"
+      flash.now[:alert] = "入力内容を確認してください。"
       render "new"
     end
   end
@@ -26,7 +26,26 @@ class Public::TargetsController < ApplicationController
     @target_task = Task.new
   end
 
+  def destroy
+    @target = Target.find(params[:id])
+    @target.destroy
+    flash[:alert] = "目標「#{@target.goal}」を削除しました"
+    redirect_to targets_path
+  end
+
   def edit
+    @target = Target.find(params[:id])
+  end
+
+  def update
+    @target = Target.find(params[:id])
+    if @target.update(target_params)
+      flash[:notice] = "目標「#{target_params[:goal]}」を編集しました。"
+      redirect_to target_path
+    else
+      flash.now[:alert] = "入力内容を確認してください。"
+      render "edit"
+    end
   end
 
   private

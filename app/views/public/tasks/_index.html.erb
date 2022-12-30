@@ -10,8 +10,9 @@
         </div>
         <div class="col-12 col-md-2">
           <% if task.member == current_member %>
-            <%= link_to "削除", target_task_path(task.target, task), remote: true, method: :delete, class: "btn btn-sm btn-danger" %>
-          <% end %>
+            <%= link_to "編集", edit_target_task_path(task.target, task), class: "btn btn-sm btn-success" %>
+            <%= link_to "削除", target_task_path(task.target, task), remote: true, method: :delete, data: { confirm: "OKを押すと目標の「#{task.content}」が削除されます。本当によろしいですか？"}, class: "btn btn-sm btn-danger" %>
+        <% end %>
         </div>
       </div>
     </div>

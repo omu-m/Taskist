@@ -38,7 +38,7 @@ scope module: :public do
   # put "/members/information" => "members#update"
   # patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
   resources :targets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
-    resources :tasks, only: [:create, :destroy]
+    resources :tasks, only: [:create, :edit, :destroy]
   end
 end
 
