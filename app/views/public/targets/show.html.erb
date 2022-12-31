@@ -49,11 +49,11 @@
     <div class="row mt-5">
       <h3>タスク</h3>
     </div>
-    <% if @target.member == current_member %>
       <div class="row">
         <div class="col-12 target-tasks">
           <%= render "public/tasks/index", target: @target %>
         </div>
+      <% if @target.member == current_member %>
         <div class="col-12">
           <%= render "public/tasks/form" %>
         </div>
