@@ -8,6 +8,23 @@ class Public::TasksController < ApplicationController
     @task.save
   end
 
+  def edit
+    @target = Target.find(params[:target_id])
+    @target_task = Task.find(params[:id])
+  end
+
+  def update
+    @target = Target.find(params[:target_id])
+    @target_task = Task.find(params[:id])
+    if @target_task.update(task_params)
+      flash[:notice] = "タスク「#{task_params[:content]}」を編集しました。"
+      redirect_to target_tasks_path
+    else
+      flash.now[:alert] = "入力内容を確認してください。"
+      render "edit"
+    end
+  end
+
   def destroy
     @target = Target.find(params[:target_id])
     @task = Task.find(params[:id])
