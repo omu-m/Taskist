@@ -18,7 +18,7 @@ class Public::TasksController < ApplicationController
     @target_task = Task.find(params[:id])
     if @target_task.update(task_params)
       flash[:notice] = "タスク「#{task_params[:content]}」を編集しました。"
-      redirect_to target_tasks_path
+      redirect_to target_task_path
     else
       flash.now[:alert] = "入力内容を確認してください。"
       render "edit"
