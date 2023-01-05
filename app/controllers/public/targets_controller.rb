@@ -18,7 +18,7 @@ class Public::TargetsController < ApplicationController
   end
 
   def index
-    @targets = Target.all
+    @targets = Target.all.order(updated_at: :desc)
   end
 
   def show
