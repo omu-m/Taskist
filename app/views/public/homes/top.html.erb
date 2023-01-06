@@ -1,2 +1,28 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="row">
+  <div class="col-11 mx-auto">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-center mt-4">タスクを共有してみよう！！</h3>
+        <p class="text-center" style="font-size: 40px;"><span class="site-name">Taskist.</span></p>
+
+        <div class="row">
+          <div class="col-8 col-md-3 mx-auto">
+            <%= link_to "もっと詳しく", about_path, class: "btn btn-block btn-outline-secondary" %>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-8 col-md-3 mx-auto">
+            <%= link_to "新規登録", new_member_registration_path, class: "btn btn-block btn-pilled btn-success" %>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-8 col-md-3 mx-auto">
+            <%= link_to "ログイン", new_member_session_path, class: "btn btn-block btn-info" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
