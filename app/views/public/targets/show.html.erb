@@ -8,14 +8,8 @@
       </div>
       <div class="col-8 col-md-4">
         <%= @target.member.name %><br>
-        <%= "投稿日：" + @target.created_at.strftime("%Y月%m日%d日") %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4" style="margin-left: 40px;" id="target-<%= @target.id %>">
-        <span class="tasks-count", style="cursor: pointer" >
-          <%= render "public/tasks/counter", target: @target %>
-        </span>
+        <%= "投稿日：" + @target.created_at.strftime("%Y月%m日%d日") %><br>
+        タスク投稿数：<%= render "public/tasks/counter", target: @target %>
       </div>
     </div>
     <div class="row mt-3">
@@ -35,10 +29,10 @@
         <div class="row">
           <% if @target.member == current_member %>
             <div class="col-6">
-              <%= link_to "編集", edit_target_path, class: "btn btn-success btn-block col-6 mx-auto" %>
+              <%= link_to "編集", edit_target_path, class: "btn btn-outline-primary btn-block col-6 mx-auto" %>
             </div>
             <div class="col-6">
-              <%= link_to "削除", target_path(@target), method: :delete, data: { confirm: "OKを押すと目標の「#{@target.goal}」が削除されます。本当によろしいですか？"}, class: "btn btn-danger btn-block col-6 mx-auto" %>
+              <%= link_to "削除", target_path(@target), method: :delete, data: { confirm: "OKを押すと目標の「#{@target.goal}」が削除されます。本当によろしいですか？"}, class: "btn btn-outline-danger btn-block col-6 mx-auto" %>
             </div>
           <% end %>
         </div>
