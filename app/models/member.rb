@@ -1,6 +1,10 @@
 class Member < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  # ゲストログイン用
+  GUEST_EMAIL = "guest@example.com"
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -24,5 +28,13 @@ class Member < ApplicationRecord
   # is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?
     super && !is_deleted
+  end
+
+  # ゲストログイン用
+  def self.guest
+    find_or_create_by!(email: GUEST_EMAIL) do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.name = "guestuser"
+    end
   end
 end

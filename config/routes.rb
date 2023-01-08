@@ -42,5 +42,10 @@ scope module: :public do
   end
 end
 
+  # ゲストログイン用
+  devise_scope :member do
+    post "members/guest_sign_in", to: "public/sessions#guest_sign_in", as: "members_guest_sign_in"
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
