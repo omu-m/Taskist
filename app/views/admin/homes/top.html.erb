@@ -1,2 +1,45 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container px-5 px-sm-0 mt-5">
+  <div class="row">
+    <div class="col-md-2 offset-md-1 mt-5">
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>管理情報</strong></h5>
+        <hr class="col-md-8 mt-2">
+      </div>
+    </div>
+    <div class="col-md-10 offset-md-1 mt-4">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>ユーザー数</th>
+            <th>有効</th>
+            <th>退会</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @members.count %> 名</td>
+            <td><%= @members.where(is_deleted: false).count %> 名</td>
+           <td><%= @members.where(is_deleted: true).count %> 名</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-md-10 offset-md-1 mt-5 my-5">
+        <table class="table table-hover table-inverse" style="text-align:center;">
+          <thead>
+            <tr>
+              <th>目標数</th>
+              <th>タスク数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @targets.count %> 件</td>
+              <td><%= @tasks.count %> 件</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
