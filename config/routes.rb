@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'members/index'
+    get 'members/show'
+    get 'members/edit'
+  end
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -8,6 +13,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 namespace :admin do
   root to: "homes#top"
+  resources :members, only: [:index, :show, :edit, :update]
 end
 
 
