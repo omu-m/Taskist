@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-10 mx-auto mt-5 admin-table-wrap">
-    <h3>会員一覧</h3>
+    <h5><strong>会員一覧</strong></h5>
     <table class="table table-bordered admin-table mt-4">
       <thead>
         <tr class="text-center">
@@ -9,6 +9,7 @@
           <th class="col-1">目標</th>
           <th class="col-1">タスク</th>
           <th class="col-2">ステータス</th>
+          <th class="col-2">詳細ページ</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +26,7 @@
                 <p class="text-success m-0">有効</p>
               <% end %>
             </td>
-            <td class="text-center"><%= link_to "詳細", admin_member_path(member), class: "btn btn-sm btn-outline-secondary" %></td>
+            <td class="text-center"><%= link_to "＋", admin_member_path(member), class: "btn btn-sm btn-outline-secondary" %></td>
           </tr>
         <% end %>
       </tbody>

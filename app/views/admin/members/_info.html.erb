@@ -1,0 +1,41 @@
+<div class="row mb-4">
+  <div class="col-12 p-2 border border-dark member-info">
+    <div class="row">
+      <div class="col-12">
+        <%= image_tag member.get_profile_image, size: "50x50", class: "rounded-circle border" %>
+        <%= member.name %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table table-borderless mt-4">
+    <tbody>
+      <tr class="text-center">
+        <th>ステータス</th>
+        <td><% if @member.is_deleted %>
+                <p class="m-0">退会</p>
+              <% else %>
+                <p class="text-success m-0">有効</p>
+              <% end %></td>
+        <td>
+          <% if @member.is_deleted %>
+            <%= link_to "有効にする", admin_member_path(@member.id, member: {is_deleted: false}), data: { confirm: "会員名「#{@member.name}」を有効にします。" }, method: :patch, class: "btn btn-outline-success btn-sm" %>
+          <% else %>
+            <%= link_to "退会させる", admin_member_path(@member.id, member: {is_deleted: true}), data: { confirm: "会員名「#{@member.name}」の退会処理を行います。" }, method: :patch, class: "btn btn-outline-danger btn-sm" %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row mt-5 mb-5">
+  <div class="col-12">
+    <%= link_to "目標一覧", admin_member_path(@member), class: "btn btn-outline-secondary btn-block col-12" %>
+    <br>
+    <br>
+    <%= link_to "タスク一覧", admin_member_path(@member), class: "btn btn-outline-secondary btn-block col-12" %>
+  </div>
+</div>
