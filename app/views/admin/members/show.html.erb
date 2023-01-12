@@ -1,2 +1,33 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<div class="row mt-5">
+  <div class="col-11 mx-auto">
+    <div class="row">
+
+      <div class="col-12 col-md-3 mx-auto">
+        <%= render "admin/members/info", member: @member %>
+      </div>
+
+      <div class="col-12 col-md-8 mx-auto admin-table">
+        <table class="table admin-table">
+          <thead>
+            <tr>
+            <th class="col-1 text-center">ID</th>
+            <th class="col-3 text-center">投稿日時</th>
+            <th class="text-center">目標</th>
+            <th class="col-1"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @targets.each do |target| %>
+              <tr>
+                <td class="text-center"><%= target.id %></td>
+                <td class="text-center"><%= target.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+                <td><%= target.goal %></td>
+                <!--<td><%#= link_to "詳細", admin_target_path(target), class: "btn btn-outline-secondary btn-sm" %></td>-->
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

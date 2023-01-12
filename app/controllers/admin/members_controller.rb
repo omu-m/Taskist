@@ -8,6 +8,9 @@ class Admin::MembersController < ApplicationController
   end
 
   def show
+    @member = Member.find(params[:id])
+    @targets = @member.targets
+    @tasks = @member.tasks
   end
 
   def edit
