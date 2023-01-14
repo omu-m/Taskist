@@ -17,6 +17,11 @@
         <!--管理者側/ログイン後-->
         <% if admin_signed_in? %>
           <li class="nav-item text-center">
+            <%= link_to admin_targets_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-list-check"></i><br>みんなの目標
+            <% end %>
+          </li>
+          <li class="nav-item text-center">
             <%= link_to admin_members_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-user"></i><br>会員一覧
             <% end %>
