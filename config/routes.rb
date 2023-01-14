@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'targets/show'
+    get 'targets/destroy'
+  end
+  namespace :admin do
     get 'members/index'
     get 'members/show'
     get 'members/edit'
@@ -13,7 +17,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 namespace :admin do
   root to: "homes#top"
-  resources :members, only: [:index, :show, :edit, :update]
+  resources :members, only: [:index, :show, :update]
+  resources :targets, only: [:index, :show, :destroy]
 end
 
 

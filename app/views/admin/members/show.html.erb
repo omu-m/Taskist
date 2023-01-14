@@ -22,7 +22,7 @@
                 <td class="text-center"><%= target.id %></td>
                 <td class="text-center"><%= target.created_at.strftime('%Y-%m-%d %H:%M') %></td>
                 <td><%= target.goal %></td>
-                <!--<td><%#= link_to "詳細", admin_target_path(target), class: "btn btn-outline-secondary btn-sm" %></td>-->
+                <td><%= link_to "詳細", admin_target_path(target), class: "btn btn-outline-secondary btn-sm" %></td>
               </tr>
             <% end %>
           </tbody>
