@@ -13,7 +13,7 @@
             <th class="col-1 text-center">ID</th>
             <th class="col-3 text-center">投稿日時</th>
             <th class="text-center">目標</th>
-            <th class="col-1"></th>
+            <th class="col-1">詳細</th>
             </tr>
           </thead>
           <tbody>
@@ -22,7 +22,7 @@
                 <td class="text-center"><%= target.id %></td>
                 <td class="text-center"><%= target.created_at.strftime('%Y-%m-%d %H:%M') %></td>
                 <td><%= target.goal %></td>
-                <td><%= link_to "詳細", admin_target_path(target), class: "btn btn-outline-secondary btn-sm" %></td>
+                <td><%= link_to "+", admin_target_path(target), class: "btn btn-outline-secondary btn-sm" %></td>
               </tr>
             <% end %>
           </tbody>
