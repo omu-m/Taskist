@@ -14,6 +14,6 @@ class Admin::TargetsController < ApplicationController
     target = Target.find(params[:id])
     target.destroy
     flash[:alert] = "目標「#{target.goal}」を削除しました"
-    redirect_to  admin_target_path(@target)
+    redirect_to  admin_targets_path
   end
 end
