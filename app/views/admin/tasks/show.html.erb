@@ -1,2 +1,34 @@
-<h1>Admin::Tasks#show</h1>
-<p>Find me in app/views/admin/tasks/show.html.erb</p>
+<div class="row">
+  <div class="col-11 mx-auto">
+    <div class="row">
+      <div class="col-12 col-md-3 mt-5 mx-auto">
+        <%= render "admin/members/info", member: @member %>
+      </div>
+      <div class="col-12 col-md-8 mx-auto admin-tasks">
+        <table class="table admin-table mt-5">
+          <thead>
+            <tr>
+              <th class="col-1 text-center">ID</th>
+              <th class="col-3 text-center">投稿日時</th>
+              <th class="col-6 text-center">タスク</th>
+              <th class="col-2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @tasks.each do |task| %>
+              <tr>
+                <td class="text-center"><%= task.id %></td>
+                <td class="text-center"><%= task.created_at.strftime('%Y-%m-%d %H:%M') %> </td>
+                <td class="text-left"><%= task.content %></td>
+                <td>
+                  <%= link_to "詳細", admin_target_path(task.target), class: "btn btn-sm btn-outline-secondary" %>
+                  <%= link_to "削除", admin_task_path(task, task.target), data: { confirm: "タスク「#{task.content}」を削除します。" }, method: :delete, class: "btn btn-sm btn-outline-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
