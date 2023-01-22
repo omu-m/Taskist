@@ -1,3 +1,11 @@
+<% if target.tasks.count == 0 %>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="mt-5 text-center">まだ登録されたタスクはありません</h3>
+    </div>
+  </div>
+<% end %>
+
 <% target.tasks.order(created_at: :desc).each do |task| %>
   <div class="row border-top border-dark pt-2">
     <div class="col-1">
@@ -12,7 +20,7 @@
           <% if task.member == current_member %>
             <%= link_to "編集", edit_target_task_path(task.target, task), class: "btn btn-sm btn-outline-primary" %>
             <%= link_to "削除", target_task_path(task.target, task), remote: true, method: :delete, data: { confirm: "OKを押すと目標の「#{task.content}」が削除されます。本当によろしいですか？"}, class: "btn btn-sm btn-outline-danger" %>
-        <% end %>
+          <% end %>
         </div>
       </div>
     </div>

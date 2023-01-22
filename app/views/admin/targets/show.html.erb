@@ -23,7 +23,18 @@
         <p>【開始日】<%= @target.start_date.strftime("%Y月%m日%d日") %> ～【達成日】<%= @target.end_date.strftime("%Y月%m日%d日") %></p>
       </div>
     </div>
-  </div>
+
+    <!--タスク一覧-->
+    <div class="row mt-5">
+      <h3>タスク</h3>
+    </div>
+      <div class="row">
+        <div class="col-12 target-tasks">
+          <%= render "admin/tasks/index", task: @target %>
+        </div>
+      </div>
+    </div>
+
 
   <div class="col-12 col-md-9 mx-auto my-4">
       <%= link_to "投稿を削除", admin_target_path(@target), method: :delete, data: { confirm: "目標「#{@target.goal}」を削除します。"},  class: "btn btn-outline-danger btn-block col-6 col-md-3 mx-auto" %>
