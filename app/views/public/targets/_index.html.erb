@@ -18,6 +18,11 @@
         <div class="col-8 col-md-4">
           <%= target.member.name %><br>
           <%= "投稿日：" + target.created_at.strftime("%Y月%m日%d日") %><br>
+          <div id = "target-<%= target.id %>">
+            <span class="favorite-btn">
+              <%= render "public/favorites/btn", target: target %>
+            </span>
+          </div>
           タスク投稿数：<%= target.tasks.count %>
         </div>
       </div>

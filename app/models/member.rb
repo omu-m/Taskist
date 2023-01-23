@@ -12,6 +12,7 @@ class Member < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :targets, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :tasks, dependent: :destroy
 
   has_one_attached :profile_image
