@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'tasks/index'
-    get 'tasks/show'
-    get 'tasks/destroy'
-  end
-  namespace :admin do
-    get 'targets/show'
-    get 'targets/destroy'
-  end
-  namespace :admin do
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-  end
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -26,7 +12,7 @@ namespace :admin do
   resources :targets, only: [:index, :show, :destroy] do
     resources :tasks, only:[:destroy]
   end
-  resources :tasks, only:[:index, :show, :destroy]
+  resources :tasks, only:[:index, :show]
 end
 
 
