@@ -1,0 +1,9 @@
+<% if target.favorited_by?(current_member) %>
+  <%= link_to target_favorites_path(target), method: :delete, remote: true, class: "text-dark", style: "text-decoration: none;" do %>
+    お気に入り：<i class="fa-solid fa-star"></i> <%= target.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to target_favorites_path(target), method: :post, remote: true, class: "text-dark", style: "text-decoration: none;" do %>
+    お気に入り：<i class="fa-regular fa-star"></i> <%= target.favorites.count %>
+  <% end %>
+<% end %>

@@ -8,4 +8,10 @@ class Target < ApplicationRecord
   validates :end_date, presence: true
 
   has_many :tasks, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+   # いいねボタンはいいねしている状態としていない状態によってアクションが変わる。
+  def favorited_by?(member)
+    favorites.where(member_id: member.id).exists?
+  end
 end
