@@ -46,8 +46,18 @@
             <% end %>
           </li>
           <li class="nav-item text-center">
+            <%= link_to new_target_path(current_member), class: "nav-link text-light" do %>
+              <i class="fa-solid fa-plus"></i><br>新規目標
+            <% end %>
+          </li>
+          <li class="nav-item text-center">
             <%= link_to member_path(current_member), class: "nav-link text-light" do %>
               <i class="fa-solid fa-user"></i><br>マイページ
+            <% end %>
+          </li>
+          <li class="nav-item text-center">
+            <%= link_to favorites_path(current_member), class: "nav-link text-light" do %>
+              <i class="fa-solid fa-star"></i><br>お気に入り
             <% end %>
           </li>
           <li class="nav-item text-center">

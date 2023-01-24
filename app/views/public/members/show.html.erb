@@ -1,37 +1,16 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-2 offset-md-1 mt-4">
-      <div style="text-align:center;">
-        <h5 class="text-center"><strong>マイページ</strong></h5>
-        <hr class="col-md-7 mt-2">
-      </div>
-    </div>
-    <div class="col-md-10 offset-md-1">
-      <% unless @member != current_member || current_member.email == "guest@example.com" %>
-        <div style="text-align:right;">
-          <%= link_to "編集する" , edit_member_path, class: "btn btn-outline-primary" %>
-        </div>
-      <% end %>
-      <table class="table table-bordered my-4">
-        <tr>
-          <th class="table-active">プロフィール画像</th><td><%= image_tag @member.get_profile_image, size: "80x80", style: "border-radius: 50px;" %></td>
-        </tr>
-        <tr>
-          <th class="table-active">名前</th><td><%= @member.name %></td>
-        </tr>
-        <% unless current_member.email == "guest@example.com" %>
-        <tr>
-          <th class="table-active">メールアドレス</th><td><%= @member.email %></td>
-        </tr>
-        <% end %>
-      </table>
-    </div>
-     <div class="col-12 col-md-8 mx-auto mt-4">
+    <%= render "info", member: @member %>
+    <div class="col-12 col-md-8 mx-auto mt-4">
       <% if @member == current_member %>
         <div style="text-align:right;">
-          <%= link_to "目標新規作成", new_target_path, class: "btn btn-info text-decoration-none" %>
+          <%= link_to "目標新規作成", new_target_path, class: "btn btn-outline-secondary text-decoration-none" %>
         </div>
       <% end %>
+      <br>
+      <div style="text-align:right;">
+        <%= link_to "★お気に入り", favorites_path, class: "btn btn-outline-secondary text-decoration-none" %>
+      </div>
       <div style="text-align:center;">
         <h5 class="text-center"><strong><%= @member.name %>の目標一覧</strong></h5>
         <hr class="col-md-10 mt-2">
