@@ -13,6 +13,7 @@ namespace :admin do
     resources :tasks, only:[:destroy]
   end
   resources :tasks, only:[:index, :show]
+  get "favorites" => "favorites#index", as: "favorites"
 end
 
 
@@ -46,7 +47,7 @@ scope module: :public do
     resource :favorites, only: [:create, :destroy]
     resources :tasks, only: [:create, :edit, :update, :destroy]
   end
-   get "favorites" => "favorites#index", as: "favorites"
+  get "favorites" => "favorites#index", as: "favorites"
 end
 
   # ゲストログイン用
