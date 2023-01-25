@@ -28,6 +28,14 @@
             <% end %>
           </tbody>
         </table>
+
+        <% if @tasks.count == 0 %>
+          <div class="row">
+            <div class="col-12">
+              <h3 class="mt-5 text-center">まだ登録されたタスクはありません</h3>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
