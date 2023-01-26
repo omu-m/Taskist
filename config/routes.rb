@@ -13,7 +13,7 @@ namespace :admin do
     resources :tasks, only:[:destroy]
   end
   resources :tasks, only:[:index, :show]
-  get "favorites" => "favorites#index", as: "favorites"
+  get "favorites/:id" => "favorites#index", as: "favorites"
 end
 
 
