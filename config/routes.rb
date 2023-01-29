@@ -46,6 +46,7 @@ scope module: :public do
   resources :targets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :tasks, only: [:create, :edit, :update, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   get "favorites" => "favorites#index", as: "favorites"
 end

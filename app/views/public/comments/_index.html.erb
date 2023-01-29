@@ -1,0 +1,31 @@
+<% target.comments.each do |comment| %>
+  <div class="row border-top border-dark pt-2">
+    <div class="col-1">
+      <%= link_to member_path(comment.member) do %>
+        <%= image_tag comment.member.get_profile_image, size: "50x50", class: "rounded-circle border" %>
+      <% end %>
+    </div>
+    <div id="target-<%= target.id %>" class="col-11">
+      <div class="row">
+        <div class="col-12">
+          <%= comment.member.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-10">
+          <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
+        </div>
+        <div class="col-12 col-md-2">
+           <% if comment.member == current_member || admin_signed_in? %>
+            <%= link_to "削除", target_comment_path(comment.target, comment), remote: true, method: :delete, class: "btn btn-sm btn-outline-danger" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mt-2 mb-1 text-right">
+          <%= comment.created_at.strftime('%Y-%m-%d %H:%M') %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

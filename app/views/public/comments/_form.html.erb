@@ -1,0 +1,4 @@
+<%= form_with model: [@target, @target_comment], local: false do |f| %>
+  <%= f.text_area :comment, rows: "3", class: "form-control mt-3" %>
+  <%= f.submit "投稿", class: "btn btn-block btn-outline-secondary col-3 mx-auto mt-4" %>
+<% end %>
