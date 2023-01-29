@@ -1,0 +1,3 @@
+$("#target-<%= @target.id %> .comments-count").html("<%= j(render "public/comments/counter", target: @target) %>");
+$(".target-comments").html("<%= j(render "public/comments/index", target: @target) %>");
+$("#comment_comment").val("");

@@ -24,6 +24,7 @@ class Public::TargetsController < ApplicationController
   def show
     @target = Target.find(params[:id])
     @target_task = Task.new
+    @target_comment = Comment.new
   end
 
   def destroy

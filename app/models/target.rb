@@ -9,6 +9,7 @@ class Target < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
    # いいねボタンはいいねしている状態としていない状態によってアクションが変わる。
   def favorited_by?(member)

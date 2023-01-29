@@ -14,7 +14,8 @@
             <%= render "public/favorites/btn", target: @target %>
           </span>
         </div>
-        タスク投稿数：<%= render "public/tasks/counter", target: @target %>
+        タスク投稿数：<%= render "public/tasks/counter", target: @target %><br>
+        コメント投稿数：<%= render "public/comments/counter", target: @target %>
       </div>
     </div>
     <div class="row mt-3">
@@ -48,15 +49,28 @@
     <div class="row mt-5">
       <h3>タスク</h3>
     </div>
-      <div class="row">
-        <div class="col-12 target-tasks">
-          <%= render "public/tasks/index", target: @target %>
-        </div>
+    <div class="row">
+      <div class="col-12 target-tasks">
+        <%= render "public/tasks/index", target: @target %>
+      </div>
       <% if @target.member == current_member %>
         <div class="col-12">
           <%= render "public/tasks/form" %>
         </div>
+      <% end %>
+    </div>
+
+    <!--コメント一覧・フォーム-->
+    <div class="row mt-5">
+      <h3>コメント</h3>
+    </div>
+    <div class="row">
+      <div class="col-12 target-comments">
+        <%= render "public/comments/index", target: @target %>
       </div>
-    <% end %>
+      <div class="col-12">
+        <%= render "public/comments/form" %>
+      </div>
+    </div>
   </div>
 </div>
