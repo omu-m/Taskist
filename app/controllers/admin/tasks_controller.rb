@@ -15,6 +15,6 @@ class Admin::TasksController < ApplicationController
     task = Task.find(params[:id])
     task.destroy
     flash[:alert] = "タスク「#{task.content}」を削除しました"
-    redirect_to admin_targets_path
+    redirect_to request.referer
   end
 end

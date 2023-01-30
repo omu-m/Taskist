@@ -32,12 +32,14 @@
   </table>
 </div>
 
-<div class="row mt-5 mb-5">
+<div class="row mt-2 mb-2">
   <div class="col-12">
     <%= link_to "目標一覧", admin_member_path(@member), class: "btn btn-outline-secondary btn-block col-12" %>
     <br>
     <%= link_to "タスク一覧", admin_task_path(@member), class: "btn btn-outline-secondary btn-block col-12" %>
     <br>
     <%= link_to "お気に入り一覧", admin_favorites_path(@member), class: "btn btn-outline-secondary btn-block col-12" %>
+    <br>
+    <%= link_to "コメント一覧", admin_comment_path(@member), class: "btn btn-outline-secondary btn-block col-12" %>
   </div>
 </div>
