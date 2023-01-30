@@ -50,7 +50,7 @@ scope module: :public do
     resources :tasks, only: [:create, :edit, :update, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  get "favorites" => "favorites#index", as: "favorites"
+  get "favorites/:id" => "favorites#index", as: "favorites"
 end
 
   # ゲストログイン用

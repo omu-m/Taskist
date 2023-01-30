@@ -3,7 +3,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @targets = @member.targets.order(updated_at: :desc)
+    @targets = @member.targets.order(updated_at: :desc).page(params[:page]).per(5)
   end
 
   def edit
