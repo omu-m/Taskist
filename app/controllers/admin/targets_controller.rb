@@ -3,7 +3,7 @@ class Admin::TargetsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @targets = Target.all.order(updated_at: :desc)
+    @targets = Target.all.order(updated_at: :desc).page(params[:page]).per(5)
   end
 
   def show

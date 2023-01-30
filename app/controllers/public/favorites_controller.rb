@@ -6,6 +6,7 @@ class Public::FavoritesController < ApplicationController
     @member = current_member
     favorites = Favorite.where(member_id: @member.id).pluck(:target_id)
     @targets = Target.order(created_at: :desc).find(favorites)
+    @targets = Target.page(params[:page]).per(5)
   end
 
 
