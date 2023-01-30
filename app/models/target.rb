@@ -11,8 +11,12 @@ class Target < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-   # いいねボタンはいいねしている状態としていない状態によってアクションが変わる。
+  # いいねボタンはいいねしている状態としていない状態によってアクションが変わる。
   def favorited_by?(member)
     favorites.where(member_id: member.id).exists?
   end
+  
+  # 完了状況
+  enum completion_status: { challenge: 0, complete: 1 }
+  
 end

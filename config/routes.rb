@@ -10,6 +10,11 @@ namespace :admin do
   root to: "homes#top"
   resources :members, only: [:index, :show, :update]
   resources :targets, only: [:index, :show, :destroy] do
+    # :idが不要な場合
+    collection do
+      get "sort_new" => "targets#sort_targets"
+      get "sort_old" => "targets#sort_targets"
+    end
     resources :tasks, only:[:destroy]
     resources :comments, only:[:destroy]
   end
@@ -46,6 +51,11 @@ scope module: :public do
   # put "/members/information" => "members#update"
   # patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
   resources :targets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+    # :idが不要な場合
+    collection do
+      get "sort_new" => "targets#sort_targets"
+      get "sort_old" => "targets#sort_targets"
+    end
     resource :favorites, only: [:create, :destroy]
     resources :tasks, only: [:create, :edit, :update, :destroy]
     resources :comments, only: [:create, :destroy]

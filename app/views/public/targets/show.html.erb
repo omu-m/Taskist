@@ -17,6 +17,18 @@
         タスク投稿数：<%= render "public/tasks/counter", target: @target %><br>
         コメント投稿数：<%= render "public/comments/counter", target: @target %>
       </div>
+      <div class="text-center font-weight-bold">
+        進捗状況：<%= @target.completion_status_i18n %>!!
+      </div>
+      <% if @target.member == current_member %>
+        <%= form_with model: @target, url: target_path, local: true do |f| %>
+          <div class="form-group text-center mb-4 mt-5">
+            <%= f.label :進捗 %><br>
+            <%= f.select :completion_status, Target.completion_statuses.keys.map{|k| [I18n.t("enums.target.completion_status.#{k}"), k]} %>
+            <%= f.submit "更新", class: "btn btn-outline-primary ml-5" %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
     <div class="row mt-3">
       <div class="col-12">

@@ -26,6 +26,9 @@
           タスク投稿数：<%= target.tasks.count %><br>
           コメント投稿数：<%= target.comments.count %>
         </div>
+        <div class="text-center font-weight-bold">
+          進捗状況：<%= target.completion_status_i18n %>!!
+        </div>
       </div>
 
       <div class="row mt-3">
@@ -46,4 +49,3 @@
     </div>
   </div>
 <% end %>
-<%= paginate targets %>

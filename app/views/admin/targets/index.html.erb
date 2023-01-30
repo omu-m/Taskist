@@ -1,5 +1,12 @@
 <div class="row">
   <div class="col-11 mx-auto">
+    <div style="text-align:right;">
+      <%= link_to "すべて", admin_targets_path %> |
+      <%= link_to "挑戦中", admin_targets_path(status: :challenge) %> |
+      <%= link_to "完了", admin_targets_path(status: :complete) %> |
+      <%= link_to "新着順", sort_new_admin_targets_path(new: "true") %> |
+      <%= link_to "古い順", sort_old_admin_targets_path(old: "true") %>
+    </div>
     <div class="row">
       <div class="col-12 col-md-8 mx-auto">
         <%= render "admin/targets/index", targets: @targets %>

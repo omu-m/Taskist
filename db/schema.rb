@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2023_01_29_115427) do
     t.text "reason", null: false
     t.date "start_date", null: false
     t.date "end_date", null: false
-    t.boolean "completion_status", default: false, null: false
+    t.integer "completion_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
