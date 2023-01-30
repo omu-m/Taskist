@@ -10,7 +10,8 @@
         <%= @target.member.name %><br>
         <%= "投稿日：" + @target.created_at.strftime("%Y月%m日%d日") %><br>
         お気に入り数：<%= @target.favorites.count %><br>
-        タスク投稿数：<%= @target.tasks.count %>
+        タスク投稿数：<%= @target.tasks.count %><br>
+        コメント投稿数：<%= render "public/comments/counter", target: @target %>
       </div>
     </div>
     <div class="row mt-3">
@@ -29,15 +30,25 @@
     <div class="row mt-5">
       <h3>タスク</h3>
     </div>
-      <div class="row">
-        <div class="col-12 target-tasks">
-          <%= render "admin/tasks/index", task: @target %>
-        </div>
+    <div class="row">
+      <div class="col-12 target-tasks">
+        <%= render "admin/tasks/index", task: @target %>
       </div>
     </div>
 
+    <!--コメント一覧-->
+    <div class="row mt-5">
+      <h3>コメント</h3>
+    </div>
+      <div class="row">
+        <div class="col-12 target-comments">
+          <%= render "admin/comments/index", comment: @target %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="col-12 col-md-9 mx-auto my-4">
-      <%= link_to "投稿を削除", admin_target_path(@target), method: :delete, data: { confirm: "目標「#{@target.goal}」を削除します。"},  class: "btn btn-outline-danger btn-block col-6 col-md-3 mx-auto" %>
+    <%= link_to "投稿を削除", admin_target_path(@target), method: :delete, data: { confirm: "目標「#{@target.goal}」を削除します。"},  class: "btn btn-outline-danger btn-block col-6 col-md-3 mx-auto" %>
   </div>
 </div>

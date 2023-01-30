@@ -19,7 +19,8 @@
           <%= target.member.name %><br>
           <%= "投稿日：" + target.created_at.strftime("%Y月%m日%d日") %><br>
           お気に入り数：<%= target.favorites.count %><br>
-          タスク投稿数：<%= target.tasks.count %>
+          タスク投稿数：<%= target.tasks.count %><br>
+          コメント投稿数：<%= target.comments.count %>
         </div>
       </div>
 

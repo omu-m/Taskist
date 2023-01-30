@@ -11,9 +11,11 @@ namespace :admin do
   resources :members, only: [:index, :show, :update]
   resources :targets, only: [:index, :show, :destroy] do
     resources :tasks, only:[:destroy]
+    resources :comments, only:[:destroy]
   end
   resources :tasks, only:[:index, :show]
   get "favorites/:id" => "favorites#index", as: "favorites"
+  resources :comments, only:[:index, :show]
 end
 
 
