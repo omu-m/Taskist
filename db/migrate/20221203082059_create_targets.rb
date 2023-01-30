@@ -12,8 +12,8 @@ class CreateTargets < ActiveRecord::Migration[6.1]
       t.date :start_date, null: false
       # 締め切りを保存するカラム
       t.date :end_date, null: false
-      # 完了状況を保存するカラム
-      t.boolean :completion_status, null: false, default: false
+      # enumで管理　integer型の完了状況を保存するカラム
+      t.integer :completion_status, null: false, default: 0
 
       t.timestamps null: false
     end

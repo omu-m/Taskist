@@ -12,3 +12,8 @@ ja: #日本語の設定を行う
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+  enums: #enumの設定を行う
+    target:
+      completion_status:
+        challenge: "挑戦中"
+        complete: "完了"
