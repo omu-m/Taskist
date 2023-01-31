@@ -15,8 +15,12 @@ class Target < ApplicationRecord
   def favorited_by?(member)
     favorites.where(member_id: member.id).exists?
   end
-  
+
   # 完了状況
   enum completion_status: { challenge: 0, complete: 1 }
-  
+
+  # 検索キーワードが部分一致すれば、その記事を出力する。
+  def self.search(keyword)
+    joins(:member).merge(Member.name_like keyword).or(where("goal like ? ", "%#{keyword}%"))
+  end
 end
