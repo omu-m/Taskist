@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-11 col-md-9 mx-auto border border-dark border-dark target-show px-5 pt-5 pb-4 mt-5">
+    <div class="row">
+      <div class="col-2 col-md-1">
+        <%= link_to member_path(@target.member) do %>
+          <%= image_tag @target.member.get_profile_image, size: "50x50", class: "rounded-circle border" %>
+        <% end %>
+      </div>
+      <div class="col-8 col-md-4">
+        <%= @target.member.name %><br>
+        <%= "投稿日：" + @target.created_at.strftime("%Y月%m日%d日") %><br>
+        <div id = "target-<%= @target.id %>">
+          <span class="favorite-btn">
+            <%= render "public/favorites/btn", target: @target %>
+          </span>
+        </div>
+        タスク投稿数：<%= render "public/tasks/counter", target: @target %><br>
+        コメント投稿数：<%= render "public/comments/counter", target: @target %>
+      </div>
+      <div class="text-center font-weight-bold">
+        進捗状況：<%= @target.completion_status_i18n %>!!
+      </div>
+      <% if @target.member == current_member %>
+        <%= form_with model: @target, url: target_path, local: true do |f| %>
+          <div class="form-group text-center mb-4 mt-5">
+            <%= f.label :進捗 %><br>
+            <%= f.select :completion_status, Target.completion_statuses.keys.map{|k| [I18n.t("enums.target.completion_status.#{k}"), k]} %>
+            <%= f.submit "更新", class: "btn btn-outline-primary ml-5" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <h3><%= @target.goal %></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p><%= safe_join(@target.reason.split("\n"),tag(:br)) %></p>
+        <p>【開始日】<%= @target.start_date.strftime("%Y月%m日%d日") %> ～【達成日】<%= @target.end_date.strftime("%Y月%m日%d日") %></p>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col-12 col-md-9 mx-auto">
+        <div class="row">
+          <% if @target.member == current_member %>
+            <div class="col-6">
+              <%= link_to "編集", edit_target_path, class: "btn btn-outline-primary btn-block col-6 mx-auto" %>
+            </div>
+            <div class="col-6">
+              <%= link_to "削除", target_path(@target), method: :delete, data: { confirm: "OKを押すと目標の「#{@target.goal}」が削除されます。本当によろしいですか？"}, class: "btn btn-outline-danger btn-block col-6 mx-auto" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!--タスク一覧・フォーム-->
+    <div class="row mt-5">
+      <h3>タスク</h3>
+    </div>
+    <div class="row">
+      <div class="col-12 target-tasks">
+        <%= render "public/tasks/index", target: @target %>
+      </div>
+      <% if @target.member == current_member %>
+        <div class="col-12">
+          <%= render "public/tasks/form" %>
+        </div>
+      <% end %>
+    </div>
+
+    <!--コメント一覧・フォーム-->
+    <div class="row mt-5">
+      <h3>コメント</h3>
+    </div>
+    <div class="row">
+      <div class="col-12 target-comments">
+        <%= render "public/comments/index", target: @target %>
+      </div>
+      <div class="col-12">
+        <%= render "public/comments/form" %>
+      </div>
+    </div>
+  </div>
+</div>

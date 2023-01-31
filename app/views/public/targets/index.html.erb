@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-11 mx-auto">
+    <div style="text-align:right;">
+      <%= render "search", keyword: @keyword %><br>
+      <%= link_to "すべて", targets_path %> |
+      <%= link_to "挑戦中", targets_path(status: :challenge) %> |
+      <%= link_to "完了", targets_path(status: :complete) %> |
+      <%= link_to "新着順", sort_new_targets_path(new: "true") %> |
+      <%= link_to "古い順", sort_old_targets_path(old: "true") %>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-8 mx-auto">
+        <%= render "public/targets/index", targets: @targets %>
+      </div>
+    </div>
+  </div>
+</div>

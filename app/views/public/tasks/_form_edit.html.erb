@@ -1,0 +1,11 @@
+<%= form_with model: [@target, @target_task], local: true do |f| %>
+  <div class="row">
+    <div class="col-11 mx-auto">
+      <div class="form-group mt-5">
+        <%= f.label :タスク（200文字以内）, class: "form-label" %>
+        <%= f.text_area :content, autofocus: true, rows: "4", class: "form-control mt-3" %>
+        <%= f.submit "投稿", class: "btn btn-block btn-outline-secondary mt-5" %>
+      </div>
+    </div>
+  </div>
+<% end %>

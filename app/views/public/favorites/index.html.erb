@@ -1,0 +1,14 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render "public/members/info", member: @member %>
+    <div class="col-12 col-md-8 mx-auto mt-4">
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong><%= @member.name %>のお気に入り一覧</strong></h5>
+        <hr class="col-md-10 mt-2">
+      </div>
+    </div>
+    <div class="col-12 col-md-8 mx-auto mb-5">
+      <%= render "public/targets/index", targets: @targets %>
+    </div>
+  </div>
+</div>

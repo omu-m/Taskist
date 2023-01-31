@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-10 mx-auto mt-3 admin-contents">
+    <div style="text-align:right;">
+      <%= render "search", keyword: @keyword %>
+    </div>
+    <h5><strong>コメント一覧</strong></h5>
+    <table class="table table-bordered admin-table mt-4">
+      <thead>
+        <tr class="text-center">
+          <th class="col-1">ID</th>
+          <th class="col-3">会員</th>
+          <th class="col-5">コメント</th>
+          <th class="col-2">投稿日時</th>
+          <th class="col-1">詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.order(created_at: :desc).each do |comment| %>
+          <tr>
+            <td class="text-center"><%= comment.id %></td>
+            <td class="text-center"><%= comment.member.name %></td>
+            <td class="text-left"><%= comment.comment %></td>
+            <td class="text-center"><%= comment.created_at.strftime('%Y-%m-%d %H:%M')  %></td>
+            <td class="text-center">
+              <%= link_to "＋", admin_target_path(comment.target), class: "btn btn-sm btn-outline-secondary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @comments %>
+  </div>
+</div>
+
+<% if @comments.count == 0 %>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="mt-5 text-center">まだ登録されたコメントはありません</h3>
+    </div>
+  </div>
+<% end %>

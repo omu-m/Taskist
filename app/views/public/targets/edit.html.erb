@@ -1,0 +1,13 @@
+<div class="row my-4">
+  <div class="col-12 col-md-7 mx-auto">
+    <% if @target.errors.any? %>
+      <% @target.errors.full_messages.each do |message| %>
+        <li class="text-danger"><%=  message %></li>
+      <% end %>
+    <% end %>
+    <div class="card border-dark">
+      <h3 class="card-header border-dark text-center">目標編集</h3>
+      <%= render "form", target: @target %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 my-4 mt-5">
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>ログイン</strong></h5>
+        <hr class="mt-2">
+      </div>
+      <div class="col-md-8 offset-md-2 mt-5">
+        <div style="text-align:center;">
+          <h6 class="text-center"><strong>会員登録がお済みでない方</strong></h6>
+          <hr class="col-md-7 mt-0">
+          <h6 class="text-center"><strong><%= link_to "こちら", new_member_registration_path %>から新規登録を行ってください。</strong></h6>
+          <hr class="col-md-10 mt-2">
+        </div>
+      </div>
+
+      <%= form_with model: @member, url: member_session_path, local: true do |f| %>
+        <div class="col-md-8 offset-md-2">
+          <div class="field mb-4 mt-5">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, autocomplete: "email", class: "form-control", id: "registration_email" %>
+          </div>
+          <div class="field mb-4">
+            <%= f.label "パスワード" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </div>
+
+          <div class="actions text-center mb-4 mt-5">
+            <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render "info", member: @member %>
+    <div class="col-12 col-md-8 mx-auto mt-4">
+      <% if @member == current_member %>
+        <div style="text-align:right;">
+          <%= link_to "目標新規作成", new_target_path, class: "btn btn-outline-secondary text-decoration-none" %>
+        </div>
+      <% end %>
+      <br>
+      <div style="text-align:right;">
+        <%= link_to "★お気に入り", favorites_path, class: "btn btn-outline-secondary text-decoration-none" %>
+      </div>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong><%= @member.name %>の目標一覧</strong></h5>
+        <hr class="col-md-10 mt-2">
+      </div>
+    </div>
+    <div class="col-12 col-md-8 mx-auto mb-5">
+      <%= render "public/targets/index", targets: @targets %>
+    </div>
+  </div>
+</div>

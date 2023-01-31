@@ -19,13 +19,13 @@
 
 ### 主な利用シーン
 * 作業を一つのプロジェクトにまとめたい時
-* 作業の進捗やプロジェクトの達成率を見える化したい時
+* 作業の進捗やプロジェクトの達成状況を見える化したい時
 
 ## 設計書
-* [UI Flows]：作成中です。
-* [ER図]：作成中です。
-* [テーブル定義書]：作成中です。
-* [アプリケーション詳細設計書]：作成中です。
+* [UI Flows](https://app.diagrams.net/#G1SyroZK_RbinH8nJuzvL8p9HmURw4TEwp)
+* [ER図](https://app.diagrams.net/#G1lw6wLB_BqZUyTgAGqZiNqHXXFVS39aIt)
+* [テーブル定義書](https://docs.google.com/spreadsheets/d/1igNZZti6_mo9q-q2_YhqzrotHk-YRDI8/edit#gid=1243549839)
+* [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1k3Qn2C9N0sN1oTyzviCMyjbecJa49vb-00LR-MbIpp0/edit#gid=549108681)
 
 ## 開発環境
 - OS：Linux(CentOS)
