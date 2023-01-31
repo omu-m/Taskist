@@ -15,7 +15,7 @@ class Member < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :comments, dependent: :destroy
-
+  has_many :activities, dependent: :destroy
 
   has_one_attached :profile_image
 
@@ -39,5 +39,9 @@ class Member < ApplicationRecord
       member.password = SecureRandom.urlsafe_base64
       member.name = "guestuser"
     end
+  end
+
+  def guest?
+    email == GUEST_EMAIL
   end
 end

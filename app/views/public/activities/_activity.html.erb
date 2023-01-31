@@ -1,0 +1,38 @@
+<table class="table table-hover table-inverse mt-5">
+  <% activities.each do |activity| %>
+    <tbody>
+      <tr>
+        <% visitor = Member.find(activity.visitor_id) %>
+        <%# visited = Member.find(activity.visited_id) %>
+        <% case activity.target_type %>
+        <% when "Comment" then %>
+          <!--コメント関連-->
+          <% comment = Comment.find(activity.target_id) %>
+          <td>
+            <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+            <%= visitor.name.truncate(8) %>が<%= link_to "『#{comment.target.goal.truncate(8)}』", target_path(comment.target.id) %>にコメントしました。
+            <br>
+            <div style="text-align:right;">
+              <%= I18n.l(comment.created_at, format: :custom) %>
+            </div>
+          </td>
+        <% when "Favorite" then %>
+          <!--お気に入り関連-->
+          <% favorite = Favorite.find(activity.target_id) %>
+          <td>
+            <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+            <%= visitor.name.truncate(8) %>が<%= link_to "『#{favorite.target.goal.truncate(8)}』", target_path(favorite.target.id) %>をお気に入りにしました。
+            <br>
+            <div style="text-align:right;">
+              <%= I18n.l(favorite.created_at, format: :custom) %>
+            </div>
+          </td>
+        <% else %>
+          <td>
+            <%= "予期しない通知" %>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
