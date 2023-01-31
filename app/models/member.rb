@@ -28,6 +28,11 @@ class Member < ApplicationRecord
     profile_image
   end
 
+  # 名称が部分一致する
+  scope :name_like, -> name {
+    where('name like ?', "%#{name}%")
+  }
+
   # is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?
     super && !is_deleted

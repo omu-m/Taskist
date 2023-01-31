@@ -60,6 +60,7 @@ scope module: :public do
   resources :targets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
     # :idが不要な場合
     collection do
+      get "search" => "targets#search"
       get "sort_new" => "targets#sort_targets"
       get "sort_old" => "targets#sort_targets"
     end

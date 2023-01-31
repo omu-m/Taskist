@@ -26,6 +26,12 @@ class Public::TargetsController < ApplicationController
     end
   end
 
+  def search
+    @targets = Target.search(params[:keyword]).page(params[:page])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   def sort_targets
     if params[:new]
       @targets = Target.all.order(created_at: "DESC").page(params[:page])
