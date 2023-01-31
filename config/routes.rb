@@ -50,6 +50,13 @@ scope module: :public do
   # get "/members/unsubscribe" => "members#unsubscribe", as: "confirm_unsubscribe"
   # put "/members/information" => "members#update"
   # patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
+  resources :activities, only: [:index] do
+    # :idが不要な場合
+    collection do
+      get "checked" => "activities#checked"
+      put "update_all" => "activities#update_all"
+    end
+  end
   resources :targets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
     # :idが不要な場合
     collection do

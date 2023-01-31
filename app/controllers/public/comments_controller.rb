@@ -7,6 +7,7 @@ class Public::CommentsController < ApplicationController
     @comment = current_member.comments.new(comment_params)
     @comment.target_id = @target.id
     @comment.save
+    @comment.create_activities(@comment, "comment", current_member.id, @target.member_id)
   end
 
   def destroy

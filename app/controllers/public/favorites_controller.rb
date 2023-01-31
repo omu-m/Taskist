@@ -11,7 +11,8 @@ class Public::FavoritesController < ApplicationController
 
   def create
     @target = Target.find(params[:target_id])
-    current_member.favorites.create(target_id: params[:target_id])
+    favorite = current_member.favorites.create(target_id: params[:target_id])
+    favorite.create_activities(favorite, "favorite", current_member.id, @target.member_id)
   end
 
   def destroy

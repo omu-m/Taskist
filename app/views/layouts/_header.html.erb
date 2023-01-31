@@ -65,6 +65,15 @@
               <i class="fa-solid fa-star"></i><br>お気に入り
             <% end %>
           </li>
+          <% unless current_member.guest? %>
+            <li class="nav-item text-center">
+              <span id="icon-badge" data-num="<%= @activities_count %>">
+                <%= link_to activities_path, class: "nav-link text-light" do %>
+                  <i class="fa-solid fa-bell"></i><br>通知
+                <% end %>
+              </span>
+            </li>
+          <% end %>
           <li class="nav-item text-center">
             <%= link_to destroy_member_session_path, method: :delete, class: "nav-link text-light" do %>
               <i class="fa-solid fa-right-from-bracket"></i><br>ログアウト
