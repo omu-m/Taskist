@@ -16,5 +16,6 @@ class Admin::HomesController < ApplicationController
 
     @targets = Target.all
     @tasks = Task.all
+    @comments = Comment.all
   end
 end
