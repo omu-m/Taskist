@@ -6,6 +6,12 @@ class Admin::CommentsController < ApplicationController
     @comments = Comment.all.page(params[:page]).per(5)
   end
 
+  def search
+    @comments = Comment.search(params[:keyword]).page(params[:page])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   def show
     @member = Member.find(params[:id])
     @comments = @member.comments.page(params[:page]).per(6)
