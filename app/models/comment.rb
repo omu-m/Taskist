@@ -16,4 +16,9 @@ class Comment < ApplicationRecord
         visited_id: visited_id
       )
   end
+
+  # 検索キーワードが部分一致すれば、その記事を出力する。
+  def self.search(keyword)
+    joins(:member).merge(Member.name_like keyword).or(where("comment like?", "%#{keyword}%"))
+  end
 end

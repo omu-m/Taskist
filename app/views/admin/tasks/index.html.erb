@@ -1,5 +1,8 @@
 <div class="row">
-  <div class="col-10 mx-auto mt-5 admin-tasks">
+  <div class="col-10 mx-auto mt-3 admin-tasks">
+    <div style="text-align:right;">
+      <%= render "search", keyword: @keyword %>
+    </div>
     <h5><strong>タスク一覧</strong></h5>
     <table class="table table-bordered admin-table mt-4">
       <thead>
@@ -28,3 +31,11 @@
     <%= paginate @tasks %>
   </div>
 </div>
+
+<% if @tasks.count == 0 %>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="mt-5 text-center">まだ登録されたタスクはありません</h3>
+    </div>
+  </div>
+<% end %>

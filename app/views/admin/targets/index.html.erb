@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-11 mx-auto">
     <div style="text-align:right;">
+      <%= render "search", keyword: @keyword %><br>
       <%= link_to "すべて", admin_targets_path %> |
       <%= link_to "挑戦中", admin_targets_path(status: :challenge) %> |
       <%= link_to "完了", admin_targets_path(status: :complete) %> |

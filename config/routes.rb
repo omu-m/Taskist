@@ -12,6 +12,7 @@ namespace :admin do
   resources :targets, only: [:index, :show, :destroy] do
     # :idが不要な場合
     collection do
+      get "search" => "targets#search"
       get "sort_new" => "targets#sort_targets"
       get "sort_old" => "targets#sort_targets"
     end
@@ -19,8 +20,10 @@ namespace :admin do
     resources :comments, only:[:destroy]
   end
   resources :tasks, only:[:index, :show]
+  get "search" => "tasks#search"
   get "favorites/:id" => "favorites#index", as: "favorites"
   resources :comments, only:[:index, :show]
+  get "search_comment" => "comments#search"
 end
 
 

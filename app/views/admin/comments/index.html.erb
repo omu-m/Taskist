@@ -1,5 +1,8 @@
 <div class="row">
-  <div class="col-10 mx-auto mt-5 admin-contents">
+  <div class="col-10 mx-auto mt-3 admin-contents">
+    <div style="text-align:right;">
+      <%= render "search", keyword: @keyword %>
+    </div>
     <h5><strong>コメント一覧</strong></h5>
     <table class="table table-bordered admin-table mt-4">
       <thead>
@@ -28,3 +31,11 @@
     <%= paginate @comments %>
   </div>
 </div>
+
+<% if @comments.count == 0 %>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="mt-5 text-center">まだ登録されたコメントはありません</h3>
+    </div>
+  </div>
+<% end %>

@@ -6,6 +6,12 @@ class Admin::TasksController < ApplicationController
     @tasks = Task.all.page(params[:page]).per(5)
   end
 
+  def search
+    @tasks = Task.search(params[:keyword]).page(params[:page])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   def show
     @member = Member.find(params[:id])
     @tasks = @member.tasks.page(params[:page]).per(6)

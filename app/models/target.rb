@@ -21,6 +21,6 @@ class Target < ApplicationRecord
 
   # 検索キーワードが部分一致すれば、その記事を出力する。
   def self.search(keyword)
-    joins(:member).merge(Member.name_like keyword).or(where("goal like ? ", "%#{keyword}%"))
+    joins(:member).merge(Member.name_like keyword).or(where("goal like? OR reason like?", "%#{keyword}%", "%#{keyword}%"))
   end
 end
